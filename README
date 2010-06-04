@@ -1,0 +1,7 @@
+
+Compare two XML documents.
+
+Scenario:
+You are writing the same document in 2 languages. The document is saved in 2 separate XML-based (docbook/xml/html/etc) files.
+This tool can locate differences between the two translations by collecting various stats and looking at the structure.
+
