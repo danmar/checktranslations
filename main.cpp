@@ -3,6 +3,7 @@
 #include <fstream>
 #include <sstream>
 #include <cctype>
+#include <cstring>
 
 static std::string readfile(const char filename[], const bool dots)
 {
@@ -30,13 +31,14 @@ static std::string readfile(const char filename[], const bool dots)
         if (state == tagname) {
             ret << c;
         } else if (state == content) {
-            if (c == '\n' ||
-                    (dots && c == '.') ||
-                    c == '!' ||
-                    c == '?' ||
-                    c == '\"' ||
-                    c == '>' ||
-                    std::isdigit(c&0xff)) {
+            if (c == '\n')
+                ret << c;
+            else if (dots && (c == '.' ||
+                              c == '!' ||
+                              c == '?' ||
+                              c == '\"' ||
+                              c == '>' ||
+                              std::isdigit(c&0xff))) {
                 ret << c;
             }
         }
